@@ -1,8 +1,8 @@
 # whitelist
 branches:
 only:
-	- master
-	- dev
+  - master
+  - dev
 
 install:
-	- apt-get update
+  - apt-get update
