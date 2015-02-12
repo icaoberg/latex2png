@@ -131,10 +131,18 @@ else
         'https://github.com/icaoberg/latex2png for more information']);
 end
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UNDOCUMENTED VARIABLES %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+param.font_size = 12;
+param.equation_regular_text_size = 30;
+param.equation_superscript_size = 16;
+param.super_superscript_size = 12;
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 % WRITE TEMPORARY FILE %
 %%%%%%%%%%%%%%%%%%%%%%%%
-write_latex_file( snippet, outfile );
+write_latex_file( snippet, outfile, param );
 
 %%%%%%%%%%%%%%%%%%%
 % CREATE DVI FILE %
@@ -157,9 +165,14 @@ delete( [ outfile '.aux' ] );
 delete( [ outfile '.log' ] );
 end%latex2png
 
-function write_latex_file( snippet, outfile )
+function write_latex_file( snippet, outfile, param )
 fileID = fopen( [outfile '.tex'] , 'w' );
 fprintf( fileID, '%s\n', '\documentclass[fleqn]{article}' );
+fprintf( fileID, '%s\n', ['\DeclareMathSizes{' ...
+    param.font_size '}{' ...
+    param.equation_regular_text_size '}{' ...
+    param.equation_superscript_size '}{' ...
+    param.super_superscript_size '}'] );
 fprintf( fileID, '%s\n', '\usepackage{amssymb,amsmath,bm}' );
 fprintf( fileID, '%s\n', '\usepackage[latin1]{inputenc}' );
 fprintf( fileID, '%s\n', '\begin{document}' );
@@ -168,4 +181,4 @@ fprintf( fileID, '%s', '$$ \displaystyle \mathindent0cm \parindent0cm ' );
 fprintf( fileID, '%s\n', [ snippet '$$' ] );
 fprintf( fileID, '%s\n', '\end{document}' );
 fclose( fileID );
-end%writeLaTeXfile
+end%write_latex_file
