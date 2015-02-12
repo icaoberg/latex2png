@@ -1,0 +1,8 @@
+# whitelist
+branches:
+only:
+	- master
+	- dev
+
+install:
+	- apt-get update
