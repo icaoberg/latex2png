@@ -35,6 +35,7 @@ end
 if nargin == 1
     param = [];
     debug = false;
+    background = 'white';
     
     %pre-requisites
     outfile = 'snippet';
@@ -48,17 +49,33 @@ elseif nargin == 2
     %pre-requisites
     if isfield( param, 'debug' )
         debug = param.debug;
-        if ~isa( outfile, 'logical' )
-            warning( 'Input argument outfile should be boolean')
+        if ~isa( debug, 'logical' )
+            warning( 'Input argument debug should be boolean' )
             debug = false;
+        end
+    end
+    
+    if isfield( param, 'density' )
+        density = param.density;
+        if ~isnumeric( density )
+            warning( 'Input argument density should be numeric' )
+            density = 300;
+        end
+    end
+    
+    if isfield( param, 'background' )
+        background = param.background;
+        if ~isa( background, 'char' )
+            warning( 'Input argument density should be a string' )
+            background = 'white';
         end
     end
     
     if isfield( param, 'outfile' )
         outfile = param.outfile;
         if ~isa( outfile, 'char' )
-            warning( 'Input argument outfile should be a string')
-            outfile = 'snippet.png';
+            warning( 'Input argument outfile should be a string' )
+            outfile = 'snippet';
         end
     end
     
@@ -120,7 +137,7 @@ system( [latex ' -interaction=nonstopmode ' outfile ' .tex'] );
 % PARSE DVI TO PNG %
 %%%%%%%%%%%%%%%%%%%%
 %if you want to make your image transparent change white to transparent
-system( [dvipng ' -q -T tight -bg white -D' density ' ' ...
+system( [dvipng ' -q -T tight -bg ' background ' -D' density ' ' ...
     outfile '.dvi'] );
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,14 +150,14 @@ delete( [ outfile '.log' ] );
 end%latex2png
 
 function write_latex_file( snippet, outfile )
-    fileID = fopen( [outfile '.tex'] , 'w' );
-    fprintf( fileID, '%s\n', '\documentclass[fleqn]{article}' );
-    fprintf( fileID, '%s\n', '\usepackage{amssymb,amsmath,bm}' );
-    fprintf( fileID, '%s\n', '\usepackage[latin1]{inputenc}' );
-    fprintf( fileID, '%s\n', '\begin{document}' );
-    fprintf( fileID, '%s\n', '\thispagestyle{empty}' );
-    fprintf( fileID, '%s', '$$ \displaystyle \mathindent0cm \parindent0cm ' );
-    fprintf( fileID, '%s\n', [ snippet '$$' ] );
-    fprintf( fileID, '%s\n', '\end{document}' );
-    fclose( fileID );
+fileID = fopen( [outfile '.tex'] , 'w' );
+fprintf( fileID, '%s\n', '\documentclass[fleqn]{article}' );
+fprintf( fileID, '%s\n', '\usepackage{amssymb,amsmath,bm}' );
+fprintf( fileID, '%s\n', '\usepackage[latin1]{inputenc}' );
+fprintf( fileID, '%s\n', '\begin{document}' );
+fprintf( fileID, '%s\n', '\thispagestyle{empty}' );
+fprintf( fileID, '%s', '$$ \displaystyle \mathindent0cm \parindent0cm ' );
+fprintf( fileID, '%s\n', [ snippet '$$' ] );
+fprintf( fileID, '%s\n', '\end{document}' );
+fclose( fileID );
 end%writeLaTeXfile
