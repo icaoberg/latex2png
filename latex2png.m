@@ -1,5 +1,6 @@
 function latex2png( snippet, param )
-% LATEX2PNG
+% LATEX2PNG Support simple script that generates a LaTeX png file from a
+% snippet.
 
 % Author: Ivan E. Cao-Berg (icaoberg@cmu.edu)
 % Created: May 21, 2008
@@ -36,7 +37,7 @@ if nargin == 1
     debug = false;
     
     %pre-requisites
-    outfile = 'snippet.png';
+    outfile = 'snippet';
     latex = '/usr/bin/latex';
     dvipng = '/usr/bin/dvipng';
     convert = '/usr/bin/convert';
