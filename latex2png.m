@@ -1,4 +1,4 @@
-function latex2png( snippet, param )
+function latex2png( snippet, parameters )
 % LATEX2PNG Support simple script that generates a LaTeX png file from a
 % snippet.
 
@@ -33,7 +33,7 @@ if ~isunix()
 end
 
 if nargin == 1
-    param = [];
+    parameters = [];
     debug = false;
     background = 'white';
     
@@ -46,9 +46,13 @@ if nargin == 1
     %choose a number from 75-300
     density = 300;
 elseif nargin == 2
+    if ~exist( 'parameters', 'var' )
+	parameters = [];
+    end
+
     %pre-requisites
-    if isfield( param, 'debug' )
-        debug = param.debug;
+    if isfield( parameters, 'debug' )
+        debug = parameters.debug;
         if ~isa( debug, 'logical' )
             warning( 'Input argument debug should be boolean' )
             debug = false;
@@ -57,8 +61,8 @@ elseif nargin == 2
         debug = false;
     end
     
-    if isfield( param, 'density' )
-        density = param.density;
+    if isfield( parameters, 'density' )
+        density = parameters.density;
         if ~isnumeric( density )
             warning( 'Input argument density should be numeric' )
             density = 300;
@@ -67,8 +71,8 @@ elseif nargin == 2
         density = 300;
     end
     
-    if isfield( param, 'background' )
-        background = param.background;
+    if isfield( parameters, 'background' )
+        background = parameters.background;
         if ~isa( background, 'char' )
             warning( 'Input argument density should be a string' )
             background = 'white';
@@ -77,8 +81,8 @@ elseif nargin == 2
         background = 'white';
     end
     
-    if isfield( param, 'outfile' )
-        outfile = param.outfile;
+    if isfield( parameters, 'outfile' )
+        outfile = parameters.outfile;
         if ~isa( outfile, 'char' )
             warning( 'Input argument outfile should be a string' )
             outfile = 'snippet';
@@ -88,8 +92,8 @@ elseif nargin == 2
     end
     
     %check latex binary
-    if isfield( param, 'latex' )
-        latex = param.latex;
+    if isfield( parameters, 'latex' )
+        latex = parameters.latex;
     else
         latex = '/usr/bin/latex';
     end
@@ -101,8 +105,8 @@ elseif nargin == 2
     end
     
     %check dvipng binary
-    if isfield( param, 'dvipng' )
-        dvipng = param.dvipng;
+    if isfield( parameters, 'dvipng' )
+        dvipng = parameters.dvipng;
     else
         dvipng = '/usr/bin/dvipng';
     end
@@ -114,8 +118,8 @@ elseif nargin == 2
     end
     
     %check convert binary
-    if isfield( param, 'convert' )
-        convert = param.convert;
+    if isfield( parameters, 'convert' )
+        convert = parameters.convert;
     else
         convert = '/usr/bin/convert';
     end
@@ -134,15 +138,19 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % UNDOCUMENTED VARIABLES %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-param.font_size = 12;
-param.equation_regular_text_size = 30;
-param.equation_superscript_size = 16;
-param.super_superscript_size = 12;
+if ~exist( 'parameters', 'var' )
+	parameters = [];
+end
+
+parameters.font_size = 20;
+parameters.equation_regular_text_size = 30;
+parameters.equation_superscript_size = 20;
+parameters.super_superscript_size = 20;
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % WRITE TEMPORARY FILE %
 %%%%%%%%%%%%%%%%%%%%%%%%
-write_latex_file( snippet, outfile, param );
+write_latex_file( snippet, outfile, parameters );
 
 %%%%%%%%%%%%%%%%%%%
 % CREATE DVI FILE %
@@ -159,26 +167,29 @@ system( [dvipng ' -q -T tight -bg ' background ' -D' density ' ' ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % REMOVE TEMPORARY FILES %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-delete( [ outfile '.tex' ] );
-delete( [ outfile '.dvi' ] );
-delete( [ outfile '.aux' ] );
-delete( [ outfile '.log' ] );
+if ~debug
+	delete( [ outfile '.tex' ] );
+	delete( [ outfile '.dvi' ] );
+	delete( [ outfile '.aux' ] );
+	delete( [ outfile '.log' ] );
+end
 end%latex2png
 
-function write_latex_file( snippet, outfile, param )
+function write_latex_file( snippet, outfile, parameters )
 fileID = fopen( [outfile '.tex'] , 'w' );
-fprintf( fileID, '%s\n', '\documentclass{article}' );
+fprintf( fileID, '%s\n', '\documentclass[fleqn]{article}' );
 fprintf( fileID, '%s\n', ['\DeclareMathSizes{' ...
-    num2str(param.font_size) '}{' ...
-    num2str(param.equation_regular_text_size) '}{' ...
-    num2str(param.equation_superscript_size) '}{' ...
-    num2str(param.super_superscript_size) '}'] );
+    num2str(parameters.font_size) '}{' ...
+    num2str(parameters.equation_regular_text_size) '}{' ...
+    num2str(parameters.equation_superscript_size) '}{' ...
+    num2str(parameters.super_superscript_size) '}'] );
 fprintf( fileID, '%s\n', '\usepackage{amssymb,amsmath,bm}' );
 fprintf( fileID, '%s\n', '\usepackage[latin1]{inputenc}' );
 fprintf( fileID, '%s\n', '\begin{document}' );
 fprintf( fileID, '%s\n', '\thispagestyle{empty}' );
-fprintf( fileID, '%s', '$$ \displaystyle \mathindent0cm \parindent0cm ' );
-fprintf( fileID, '%s\n', [ snippet '$$' ] );
+fprintf( fileID, '%s\n', '\begin{equation*}' );
+fprintf( fileID, '%s\n', [ snippet ] );
+fprintf( fileID, '%s\n', '\end{equation*}' );
 fprintf( fileID, '%s\n', '\end{document}' );
 fclose( fileID );
 end%write_latex_file
