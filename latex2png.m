@@ -27,6 +27,7 @@ function latex2png( snippet, outfile )
 latex = '/usr/bin/latex';
 dvipng = '/usr/bin/dvipng';
 convert = '/usr/bin/convert';
+
 %choose a number from 75-300
 density = 300;
 
