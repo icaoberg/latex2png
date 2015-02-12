@@ -53,6 +53,8 @@ elseif nargin == 2
             warning( 'Input argument debug should be boolean' )
             debug = false;
         end
+    else
+        debug = false;
     end
     
     if isfield( param, 'density' )
@@ -61,6 +63,8 @@ elseif nargin == 2
             warning( 'Input argument density should be numeric' )
             density = 300;
         end
+    else
+        density = 300;
     end
     
     if isfield( param, 'background' )
@@ -69,6 +73,8 @@ elseif nargin == 2
             warning( 'Input argument density should be a string' )
             background = 'white';
         end
+    else
+        background = 'white';
     end
     
     if isfield( param, 'outfile' )
@@ -77,6 +83,8 @@ elseif nargin == 2
             warning( 'Input argument outfile should be a string' )
             outfile = 'snippet';
         end
+    else
+        outfile = 'snippet';
     end
     
     %check latex binary
