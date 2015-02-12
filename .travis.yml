@@ -10,3 +10,6 @@ install:
   - sudo apt-add-repository --yes ppa:octave/stable
   - sudo apt-get update -qq
   - sudo apt-get install octave
+
+script:
+  - echo "Done!"
