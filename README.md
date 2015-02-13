@@ -43,3 +43,30 @@ The perl-script hasn't been tested on Windows, although it could potentially wor
 latex2png.m
 
 For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a propietary scientific tool for Linux, Windows and MacOSX among others. I use Matlab a lot, and I thought about writing a function that would do the same job. I think that if you use Matlab Distributing Toolbox and/or run Matlab on a server you will find this script very useful. To get more information about Matlab, click here.
+
+## Examples
+
+### Array
+
+```
+\begin{displaymath}
+\normalsize         \left(\large\begin{array}{GC+23}         
+\varepsilon_x\\\varepsilon_y\\\varepsilon_z\\\gamma_{xy}\\         
+\gamma_{xz}\\\gamma_{yz}\end{array}\right)\ {\Large=}         
+\ \left[\begin{array}{CC}         
+\begin{array}\frac1{E_{\fs{+1}x}}         
+&-\frac{\nu_{xy}}{E_{\fs{+1}x}}         
+&-\frac{\nu_{\fs{+1}xz}}{E_{\fs{+1}x}}\\         
+-\frac{\nu_{yx}}{E_y}&\frac1{E_{y}}&-\frac{\nu_{yz}}{E_y}\\         
+-\frac{\nu_{\fs{+1}zx}}{E_{\fs{+1}z}}&         
+-\frac{\nu_{zy}}{E_{\fs{+1}z}}         
+&\frac1{E_{\fs{+1}z}}\end{array} & {\LARGE 0} \\         
+{\LARGE 0} & \begin{array}\frac1{G_{xy}}&&\\         
+&\frac1{G_{\fs{+1}xz}}&\\&&\frac1{G_{yz}}\end{array}         
+\end{array}\right]         \ 
+\left(\large\begin{array}         
+\sigma_x\\\sigma_y\\\sigma_z\\\tau_{xy}\\\tau_{xz}\\\tau_{yz}         
+\end{array}\right)
+\end{displaymath}
+```
+![Array](images/array.png)
