@@ -1,0 +1,18 @@
+language: python
+
+# whitelist
+branches:
+only:
+  - master
+  - dev
+
+install:
+  - sudo apt-add-repository --yes ppa:octave/stable
+  - sudo apt-get update -qq
+  - sudo apt-get install texlive-full
+  - sudo apt-get install octave
+
+script:
+  - echo "Octave/Matlab examples"
+  - cd examples/octave
+  - bash quadratic.sh
