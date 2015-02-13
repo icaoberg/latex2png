@@ -6,10 +6,7 @@ The latex2png script is a tool for parsing LaTeX snippets into png images. It co
 
 ## Disclaimer
 
-I build this in 2008 to help me build
-
-## License
-
+I build this in 2008 while playing with [mimetex](http://www.forkosh.com/mimetex.html).
 
 ## Prerequisites
 All scripts require
@@ -117,3 +114,27 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 \right) \!
 \end{displaymath}
 ```
+
+## TODO
+- [ ] latex2png.m
+  - [x] Finish script
+  - [x] Add demos/examples
+  - [x] Test if script is compatible with Octave
+  - [x] Test if script is compatible with Matlab
+  - [x] Add tests to Travis CI config file
+  - [ ] Merge dev branch into master
+- [ ] latex2png.bash
+  - [ ] Finish script
+  - [ ] Add demos/examples
+  - [ ] Add tests to Travis CI config file
+  - [ ] Merge dev branch into master
+- [ ] latex2png.pl
+  - [ ] Finish script
+  - [ ] Add demos/examples
+  - [ ] Add tests to Travis CI config file
+  - [ ] Merge dev branch into master
+- [ ] latex2png.py
+  - [ ] Finish script
+  - [ ] Add demos/examples
+  - [ ] Add tests to Travis CI config file
+  - [ ] Merge dev branch into master
