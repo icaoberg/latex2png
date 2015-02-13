@@ -116,19 +116,6 @@ elseif nargin == 2
             'dvipng in Ubuntu type in terminal: sudo apt-get install ' ...
             'dvipng'] );
     end
-    
-    %check convert binary
-    if isfield( parameters, 'convert' )
-        convert = parameters.convert;
-    else
-        convert = '/usr/bin/convert';
-    end
-    
-    if( ~exist( convert, 'file' ) )
-        error( ['latex2png: convert was not located in ' convert '. To install ' ...
-            'convert in Ubuntu type in terminal: sudo apt-get install ' ...
-            'imagemagick'] );
-    end
 else
     error( ['latex2png: Wrong number of input arguments. Refer to ' ...
         'documentation or visit http://latex2png.sourceforge.net or ' ...

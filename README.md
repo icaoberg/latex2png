@@ -31,12 +31,6 @@ To install `dvipng` in Ubuntu type in a terminal
 sudo apt-get install dvipng
 ```
 
-You will also need to install `convert`, a tool from ImageMagick. To install ImageMagick in Ubuntu type in a terminal
-
-```
-sudo apt-get install imagemagick
-```
-
 Comment: In most Linux distributions, you will find a `LaTeX` binary/link in `/usr/bin/latex` as well as another for `dvipng` in `/usr/bin/dvipng`. 
 
 ## latex2png.m
