@@ -4,6 +4,10 @@
 
 The latex2png script is a tool for parsing LaTeX snippets into png images. It comes in three flavors, a shell-script, a perl-script and a Matlab-script. The three scripts perform the same tasks and depending on your needs you will find one or many very useful.
 
+## Disclaimer
+
+I build this in 2008 to help me build
+
 ## License
 
 
@@ -46,7 +50,7 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 
 ## Examples
 
-### Array
+### array.tex
 #### Image
 ![Array](images/array.png)
 
@@ -74,9 +78,9 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 \end{displaymath}
 ```
 
-### Series
+### series.tex
 #### Image
-![Array](images/series.png)
+![Series](images/series.png)
 
 #### LaTeX snippet
 
@@ -88,14 +92,28 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 \end{displaymath}
 ```
 
-### Integral
+### integral.tex
 #### Image
-![Array](images/integral.png)
+![Integral](images/integral.png)
 
 #### LaTeX snippet
 
 ```
 \begin{displaymath}
 \int \ln{x} dx = |x| \ln{|x|} - x +c
+\end{displaymath}
+```
+
+### pdf.tex
+#### Image
+![PDF](images/pdf.png)
+
+#### LaTeX snippet
+
+```
+\begin{displaymath}
+\frac1{\sigma\sqrt{2\pi}}\; 
+\exp\left(-\frac{\left(x-\mu\right)^2}{2\sigma^2} 
+\right) \!
 \end{displaymath}
 ```
