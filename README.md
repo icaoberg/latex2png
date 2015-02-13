@@ -2,48 +2,52 @@
 
 ## About
 
-The latex2png script is a tool for parsing LaTeX snippets into png images. It comes in three flavors, a shell-script, a perl-script and a Matlab-script. The three scripts perform the same tasks and depending on your needs you will find one or many very useful.
+The latex2png scripts are tools for parsing LaTeX snippets into png images. It comes in several flavors: a shell-script, a perl-script and an Octave/Matlab-script and a python script.
 
 ## Disclaimer
 
-I build this in 2008 while playing with [mimetex](http://www.forkosh.com/mimetex.html).
+I built this in 2008 while playing with [mimetex](http://www.forkosh.com/mimetex.html).
 
 ## Prerequisites
 All scripts require
 
 * A LaTeX distribution e.g. LaTeX, MikTeX or TeTeX
 * dvipng
+* convert
 
 ## Installation
 
-All three scripts require a LaTeX distribution and dvipng. The shell-script will only work in a Linux distribution, e.g. Ubuntu. I have only tested this script in Ubuntu Hardy Heron and in a custom Linux distribution from Carnegie Mellon University (linux.andrew.cmu.edu).
+All three scripts require a LaTeX distribution and dvipng. The shell-script will only work in a Linux distribution, e.g. Ubuntu. I have only tested this script in Ubuntu 14.01 and [Travis CI](https://travis-ci.org/icaoberg/latex2png).
 
-To install tetex (a LaTeX distribution) in Ubuntu type in a terminal
+To install a `LaTeX` distribution in Ubuntu type in a terminal
 
 ```
-sudo apt-get install tetex-base tetex-extra
+sudo apt-get install texlive-full
 ```
 
-To install dvipng in Ubuntu type in a terminal
+To install `dvipng` in Ubuntu type in a terminal
 
 ```
 sudo apt-get install dvipng
 ```
 
-Comment: In most Linux distributions, you will find LaTeX in /usr/bin/latex and dvipng in /usr/bin/dvipng. If any of these programs is available but not in those defaults folders you may modify the scripts to fit your needs.
-latex2png
+You will also need to install `convert`, a tool from ImageMagick. To install ImageMagick in Ubuntu type in a terminal
 
-If you installed a LaTex distribution and dvipng, you are ready to go. Move the script to the location of your choice.
-latex2png.pl
+```
+sudo apt-get install imagemagick
+```
 
-For latex2png.pl, the Perl-version of the script, you also need Perl. To install perl in Ubuntu type in a terminal
+Comment: In most Linux distributions, you will find a `LaTeX` binary/link in `/usr/bin/latex` as well as another for `dvipng` in `/usr/bin/dvipng`. 
 
-sudo apt-get install perl
+## latex2png.m
 
-The perl-script hasn't been tested on Windows, although it could potentially work. LaTeX and Perl is supported by and dvipng comes with MikTex.
-latex2png.m
+For `latex2png.m`, the Matlab-version of the script, you need Matlab. Matlab is a propietary scientific tool for Linux, Windows and MacOSX among others. I use Matlab a lot, and I thought about writing a function that would do the same job. I think that if you use Matlab Distributing Toolbox and/or run Matlab on a server you will find this script very useful.
 
-For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a propietary scientific tool for Linux, Windows and MacOSX among others. I use Matlab a lot, and I thought about writing a function that would do the same job. I think that if you use Matlab Distributing Toolbox and/or run Matlab on a server you will find this script very useful. To get more information about Matlab, click here.
+The script has also been tested in Octave. To install Octave in Ubuntu type in a terminal
+
+```
+sudo apt-get install octave
+```
 
 ## Examples
 
