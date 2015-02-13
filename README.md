@@ -47,6 +47,10 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 ## Examples
 
 ### Array
+#### Image
+![Array](images/array.png)
+
+#### LaTeX snippet
 
 ```
 \begin{displaymath}
@@ -69,4 +73,29 @@ For latex2png.m, the Matlab-version of the script, you need Matlab. Matlab is a 
 \end{array}\right)
 \end{displaymath}
 ```
-![Array](images/array.png)
+
+### Series
+#### Image
+![Array](images/series.png)
+
+#### LaTeX snippet
+
+```
+\begin{displaymath}
+1 - {1 \over 2} + {1 \over 3} - {1 \over 4} + {1 
+\over 5} - \cdots =\sum_{n=1}^\infty (-1)^{n+1} {1 
+\over n}.
+\end{displaymath}
+```
+
+### Integral
+#### Image
+![Array](images/integral.png)
+
+#### LaTeX snippet
+
+```
+\begin{displaymath}
+\int \ln{x} dx = |x| \ln{|x|} - x +c
+\end{displaymath}
+```
