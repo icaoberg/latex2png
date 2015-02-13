@@ -161,7 +161,7 @@ system( [latex ' -interaction=nonstopmode ' outfile ' .tex'] );
 % PARSE DVI TO PNG %
 %%%%%%%%%%%%%%%%%%%%
 %if you want to make your image transparent change white to transparent
-system( [dvipng ' -q -T tight -bg ' background ' -D' density ' ' ...
+system( [dvipng ' -q -T tight -bg ' background ' -D' num2str(density) ' ' ...
     outfile '.dvi'] );
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
