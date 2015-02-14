@@ -47,7 +47,7 @@ sudo apt-get install octave
 
 ### array.tex
 #### Image
-![Array](images/array.png)
+![Array](./images/array.png)
 
 #### LaTeX snippet
 
@@ -75,7 +75,7 @@ sudo apt-get install octave
 
 ### series.tex
 #### Image
-![Series](images/series.png)
+![Series](./images/series.png)
 
 #### LaTeX snippet
 
@@ -89,7 +89,7 @@ sudo apt-get install octave
 
 ### integral.tex
 #### Image
-![Integral](images/integral.png)
+![Integral](./images/integral.png)
 
 #### LaTeX snippet
 
@@ -101,7 +101,7 @@ sudo apt-get install octave
 
 ### pdf.tex
 #### Image
-![PDF](images/pdf.png)
+![PDF](./images/pdf.png)
 
 #### LaTeX snippet
 
