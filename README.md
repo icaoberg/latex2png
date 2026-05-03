@@ -1,57 +1,56 @@
 # latex2png
 
+> **DEPRECATED**
+> This project is no longer maintained. It was written in 2008 and has not been actively developed since. The bash, Perl, and Python variants were never completed. See [Alternatives](#alternatives) below for modern replacements.
+
+---
+
 ## About
 
-The latex2png scripts are tools for parsing LaTeX snippets into png images. It comes in several flavors: a shell-script, a perl-script and an Octave/Matlab-script and a python script.
+`latex2png` is a collection of scripts for converting LaTeX math snippets into PNG images. It was originally written in 2008 and includes a working Octave/Matlab script (`latex2png.m`). The shell, Perl, and Python variants were started but never finished.
+
+## Alternatives
+
+Several well-maintained tools now cover this use case more robustly:
+
+- **[latex2image](https://github.com/lesteve/latex2image)** — Python-based CLI, actively maintained, supports multiple output formats (PNG, SVG, PDF).
+- **[Matplotlib](https://matplotlib.org/)** — Set `usetex=True` to render LaTeX math directly in Python plots.
+- **[SymPy](https://www.sympy.org/)** — `sympy.preview()` renders a LaTeX expression to a PNG without needing a separate script.
+- **[KaTeX](https://katex.org/)** / **[MathJax](https://www.mathjax.org/)** — If your target is the web, these render LaTeX in the browser without any server-side image generation.
+- **[Pandoc](https://pandoc.org/)** — Converts documents containing LaTeX math to many output formats including HTML and PDF.
+- **[dvipng](https://savannah.nongnu.org/projects/dvipng/)** — The underlying tool used here; can be scripted directly for batch conversions.
 
 ## Disclaimer
 
-I built this in 2008 while playing with [mimetex](http://www.forkosh.com/mimetex.html).
+Built in 2008 while experimenting with [mimetex](http://www.forkosh.com/mimetex.html). Kept here for historical reference.
 
 ## Prerequisites
-All scripts require
 
-* A LaTeX distribution e.g. LaTeX, MikTeX or TeTeX
-* dvipng
-* convert
+- A LaTeX distribution (TeX Live, MiKTeX, or teTeX)
+- `dvipng`
 
-## Installation
+On Ubuntu/Debian:
 
-All three scripts require a LaTeX distribution and dvipng. The shell-script will only work in a Linux distribution, e.g. Ubuntu. I have only tested this script in Ubuntu 14.01 and [Travis CI](https://travis-ci.org/icaoberg/latex2png).
-
-To install a `LaTeX` distribution in Ubuntu type in a terminal
-
-```
-sudo apt-get install texlive-full
+```bash
+sudo apt-get install texlive-full dvipng
 ```
 
-To install `dvipng` in Ubuntu type in a terminal
+## latex2png.m (Octave/Matlab)
 
-```
-sudo apt-get install dvipng
-```
+This is the only variant that was completed and tested. It works in both Matlab and GNU Octave.
 
-Comment: In most Linux distributions, you will find a `LaTeX` binary/link in `/usr/bin/latex` as well as another for `dvipng` in `/usr/bin/dvipng`. 
+Install Octave on Ubuntu:
 
-## latex2png.m
-
-For `latex2png.m`, the Matlab-version of the script, you need Matlab. Matlab is a propietary scientific tool for Linux, Windows and MacOSX among others. I use Matlab a lot, and I thought about writing a function that would do the same job. I think that if you use Matlab Distributing Toolbox and/or run Matlab on a server you will find this script very useful.
-
-The script has also been tested in Octave. To install Octave in Ubuntu type in a terminal
-
-```
+```bash
 sudo apt-get install octave
 ```
 
 ## Examples
 
 ### array.tex
-#### Image
 ![Array](images/array.png)
 
-#### LaTeX snippet
-
-```
+```latex
 \begin{displaymath}
 \normalsize         \left(\large\begin{array}{GC+23}         
 \varepsilon_x\\\varepsilon_y\\\varepsilon_z\\\gamma_{xy}\\         
@@ -74,12 +73,9 @@ sudo apt-get install octave
 ```
 
 ### series.tex
-#### Image
 ![Series](images/series.png)
 
-#### LaTeX snippet
-
-```
+```latex
 \begin{displaymath}
 1 - {1 \over 2} + {1 \over 3} - {1 \over 4} + {1 
 \over 5} - \cdots =\sum_{n=1}^\infty (-1)^{n+1} {1 
@@ -88,24 +84,18 @@ sudo apt-get install octave
 ```
 
 ### integral.tex
-#### Image
 ![Integral](images/integral.png)
 
-#### LaTeX snippet
-
-```
+```latex
 \begin{displaymath}
 \int \ln{x} dx = |x| \ln{|x|} - x +c
 \end{displaymath}
 ```
 
 ### pdf.tex
-#### Image
 ![PDF](images/pdf.png)
 
-#### LaTeX snippet
-
-```
+```latex
 \begin{displaymath}
 \frac1{\sigma\sqrt{2\pi}}\; 
 \exp\left(-\frac{\left(x-\mu\right)^2}{2\sigma^2} 
@@ -113,26 +103,6 @@ sudo apt-get install octave
 \end{displaymath}
 ```
 
-## TODO
-- [ ] latex2png.m
-  - [x] Finish script
-  - [x] Add demos/examples
-  - [x] Test if script is compatible with Octave
-  - [x] Test if script is compatible with Matlab
-  - [x] Add tests to Travis CI config file
-  - [ ] Merge dev branch into master
-- [ ] latex2png.bash
-  - [ ] Finish script
-  - [ ] Add demos/examples
-  - [ ] Add tests to Travis CI config file
-  - [ ] Merge dev branch into master
-- [ ] latex2png.pl
-  - [ ] Finish script
-  - [ ] Add demos/examples
-  - [ ] Add tests to Travis CI config file
-  - [ ] Merge dev branch into master
-- [ ] latex2png.py
-  - [ ] Finish script
-  - [ ] Add demos/examples
-  - [ ] Add tests to Travis CI config file
-  - [ ] Merge dev branch into master
+## License
+
+GNU General Public License v2 or later. See [LICENSE](LICENSE).
